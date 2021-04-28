@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       AWS_S3_BUCKET_NAME: ${{ steps.setvars.outputs.AWS_S3_BUCKET_NAME }}
+      AWS_WWW_S3_BUCKET_NAME: ${{ steps.setvars.outputs.AWS_S3_BUCKET_NAME }}
       AWS_CLOUDFRONT_ID: ${{ steps.setvars.outputs.AWS_CLOUDFRONT_ID }}
+      AWS_WWW_CLOUDFRONT_ID: ${{ steps.setvars.outputs.AWS_CLOUDFRONT_ID }}
     steps:
       - name: Cancel previous workflow
         uses: styfle/cancel-workflow-action@0.4.0
@@ -22,6 +24,8 @@ jobs:
         run: |
           echo "::set-output name=AWS_S3_BUCKET_NAME::tresases-cl"
           echo "::set-output name=AWS_CLOUDFRONT_ID::E3U3CZVPJY59PU"
+          echo "::set-output name=AWS_WWW_S3_BUCKET_NAME::www-tresases-cl"
+          echo "::set-output name=AWS_WWW_CLOUDFRONT_ID::E2THGQIR3ADW6X"
   build:
     runs-on: ubuntu-latest
     needs: init
@@ -43,6 +47,11 @@ jobs:
           export "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}"
           export "AWS_CLOUDFRONT_ID=${{ needs.init.outputs.AWS_CLOUDFRONT_ID }}"
           export "AWS_S3_BUCKET_NAME=${{ needs.init.outputs.AWS_S3_BUCKET_NAME }}"
+          export "AWS_CLOUDFRONT_ID=${{ needs.init.outputs.AWS_WWW_CLOUDFRONT_ID }}"
+          export "AWS_S3_BUCKET_NAME=${{ needs.init.outputs.AWS_WWW_S3_BUCKET_NAME }}"
           aws s3 rm s3://${AWS_S3_BUCKET_NAME}/ --recursive
+          aws s3 rm s3://${AWS_WWW_S3_BUCKET_NAME}/ --recursive
           aws s3 cp ./out/ s3://${AWS_S3_BUCKET_NAME}/ --recursive
+          aws s3 cp ./out/ s3://${AWS_WWW_S3_BUCKET_NAME}/ --recursive
           aws cloudfront create-invalidation --distribution-id ${AWS_CLOUDFRONT_ID} --paths "/*"
+          aws cloudfront create-invalidation --distribution-id ${AWS_WWW_CLOUDFRONT_ID} --paths "/*"
