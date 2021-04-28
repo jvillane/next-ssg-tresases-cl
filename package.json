@@ -16,7 +16,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "globby": "^11.0.3",
+    "next-sitemap": "^1.6.25",
     "postcss": "^8.2.13",
+    "prettier": "^2.2.1",
     "tailwindcss": "^2.1.2",
     "typescript": "^4.2.4"
   }
