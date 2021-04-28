@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       AWS_S3_BUCKET_NAME: ${{ steps.setvars.outputs.AWS_S3_BUCKET_NAME }}
-      AWS_WWW_S3_BUCKET_NAME: ${{ steps.setvars.outputs.AWS_S3_BUCKET_NAME }}
+      AWS_WWW_S3_BUCKET_NAME: ${{ steps.setvars.outputs.AWS_WWW_S3_BUCKET_NAME }}
       AWS_CLOUDFRONT_ID: ${{ steps.setvars.outputs.AWS_CLOUDFRONT_ID }}
-      AWS_WWW_CLOUDFRONT_ID: ${{ steps.setvars.outputs.AWS_CLOUDFRONT_ID }}
+      AWS_WWW_CLOUDFRONT_ID: ${{ steps.setvars.outputs.AWS_WWW_CLOUDFRONT_ID }}
     steps:
       - name: Cancel previous workflow
         uses: styfle/cancel-workflow-action@0.4.0
