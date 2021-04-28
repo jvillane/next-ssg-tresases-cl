@@ -1,10 +1,10 @@
 {
-  "name": "my-project",
+  "name": "tresases.cl",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap && next export",
     "start": "next start"
   },
   "dependencies": {
