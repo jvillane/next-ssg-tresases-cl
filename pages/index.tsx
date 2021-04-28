@@ -5,7 +5,6 @@ import Proficiency from "../components/proficiency";
 import Focus from "../components/focus";
 import Services from "../components/services";
 import Footer from "../components/footer";
-import Stats from "../components/stats";
 import Schedule from "../components/schedule";
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
         <Proficiency/>
         <Focus/>
         <Services/>
-        <Stats/>
+        {/*<Stats/>*/}
         <Schedule/>
       </main>
       <Footer/>
