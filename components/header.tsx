@@ -8,15 +8,15 @@ export default function Header() {
         {({ open }) => (
           <>
             <div
-              className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
-              <div className="flex justify-start lg:w-0 lg:flex-1">
+              className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start space-x-3 lg:px-8">
+              <div className="flex justify-start">
                 <a href="#">
                   <span className="sr-only">Workflow</span>
                   <img className="h-8 w-auto sm:h-10" src="/3ases-logo.png" alt="Tres Ases"/>
                 </a>
               </div>
               <nav className="flex space-x-10">
-                <a href="/" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                <a href="/" className="text-xl font-bold text-purple-500 hover:text-purple-900">
                   Tres Ases
                 </a>
               </nav>
