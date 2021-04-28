@@ -35,7 +35,6 @@ jobs:
       - name: Build
         run: |
           yarn install
-          node scripts/generateSiteMap.js
           yarn run build
       - name: Deploy
         run: |
